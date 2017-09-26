@@ -13,8 +13,6 @@ perfect_notes = ['A','B','C','D','E','F','G']
 sharp_notes = ['A#','C#','D#','F#','G#']
 flat_notes = ['Ab','Bb','Db','Eb', 'Gb']
 
-triad_groups = ['123', '234', '345', '456']
-
 class GuitarTrainerApp (tk.Tk):
 
 	def __init__(self, *args, **kwargs):
@@ -55,7 +53,6 @@ class StartPage(tk.Frame):
 		img_label = tk.Label(self, image=img)
 		img_label.image = img
 		img_label.pack()
-
 
 		selection_label = tk.Label(self, text="Select practice mode", font=LARGE_FONT)
 		selection_label.pack(pady=10, padx=10)
@@ -159,16 +156,7 @@ class PracticePage(tk.Frame):
 			if int(timer_time) > 0:
 				PracticePage.timer_max = int(timer_time)
 
-			self.triad_choices = []
-			
-			if self.first_triad_var.get():
-				self.triad_choices.append("123")
-			if self.second_triad_var.get():
-				self.triad_choices.append("234")
-			if self.third_triad_var.get():
-				self.triad_choices.append("345")
-			if self.fourth_triad_var.get():
-				self.triad_choices.append("456")
+			self.options_callback()
 			popup.destroy()
 
 		exit_button = tk.Button(popup, text="Okay", command=callback)
@@ -281,7 +269,7 @@ class ScalesPage(PracticePage):
 	def get_specific_key_type(self):
 		scale = ""
 		if self.scale_choices:
-			scale = random.choice(self.triad_choices)
+			scale = random.choice(self.scale_choices)
 		return scale
 
 	def get_specific_key_label(self, popup):
