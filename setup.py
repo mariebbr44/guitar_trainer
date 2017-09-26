@@ -9,7 +9,7 @@ from setuptools import setup
 
 APP = ['guitar_trainer.py']
 DATA_FILES = ['guitar_cat.jpeg']
-OPTIONS = {'iconfile': '/Users/mariebbr/guitar_trainer/guitar.icns'}
+OPTIONS = {'iconfile': 'guitar.icns'}
 
 setup(
 	name="Guitar Trainer",

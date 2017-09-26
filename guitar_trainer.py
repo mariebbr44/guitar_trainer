@@ -66,6 +66,8 @@ class StartPage(tk.Frame):
 		created_by_label = tk.Label(self, text="Created by Brent Marieb", font=SMALL_ITALIC_FONT)
 		created_by_label.pack(pady=10, padx=10)
 
+
+# Parent class for the Scales and Chords Pages
 class PracticePage(tk.Frame):
 
 	timer_max = 10
@@ -116,6 +118,9 @@ class PracticePage(tk.Frame):
 	    random_note = random.choice(notes)
 	    return random_note, key
 
+"""The following functions are defined only in the derived classes, 
+and are called using the Hollywood Principle from the parent class"""
+
 	def get_header_label():
 		pass
 
@@ -149,13 +154,12 @@ class PracticePage(tk.Frame):
 
 		self.pack_options_checkboxes(popup)
 
-		
-
 		def callback():
 			timer_time = timer_entry.get()
 			if int(timer_time) > 0:
 				PracticePage.timer_max = int(timer_time)
 
+			# Get class specific option information
 			self.options_callback()
 			popup.destroy()
 
@@ -252,7 +256,6 @@ class ChordsPage(PracticePage):
 
 class ScalesPage(PracticePage):
 	
-
 	scale_choices = []
 
 	def __init__(self, parent, controller):
@@ -292,9 +295,6 @@ class ScalesPage(PracticePage):
 			self.scale_choices.append("Diatonic")
 		if self.blues_var.get():
 			self.scale_choices.append("Blues")
-
-
-
 
 app = GuitarTrainerApp()
 app.geometry("800x600")
